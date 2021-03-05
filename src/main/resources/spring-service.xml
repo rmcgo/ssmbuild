@@ -32,7 +32,7 @@
     <!--结合AOP实现事务的织入-->
     <!--配置事务通知：-->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
-        <!--给那些方法配置事务-->
+        <!--给哪些方法配置事务-->
         <!--配置事务的传播特性：【new】-->
         <tx:attributes>
             <tx:method name="*" propagation="REQUIRED"/>
@@ -44,7 +44,4 @@
         <aop:pointcut id="txPointCut" expression="execution(* com.rmc.dao.*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
     </aop:config>
-
-
-
 </beans>

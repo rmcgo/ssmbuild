@@ -46,7 +46,6 @@ public class BookController {
     @RequestMapping("/toUpdateBook")
     public String toUpdateBook(int id,Model model){
         Books book = bookService.queryBookById(id);
-        System.out.println("toUpdateBook=>" + book);
         model.addAttribute("queryBook",book);
         return "updateBook";
     }
@@ -54,7 +53,6 @@ public class BookController {
     //修改书籍
     @RequestMapping("/updateBook")
     public String updateBook(Books book){
-        System.out.println("updateBook=>" + book);
         bookService.updateBook(book);
         return "redirect:/book/allBook";
     }
