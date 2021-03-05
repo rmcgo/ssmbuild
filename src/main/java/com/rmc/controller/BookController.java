@@ -2,8 +2,6 @@ package com.rmc.controller;
 
 import com.rmc.pojo.Books;
 import com.rmc.service.BookService;
-import com.rmc.service.BookServiceImpl;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -11,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -73,10 +70,8 @@ public class BookController {
     @RequestMapping("/queryBook")
     public String queryBook(String queryBookName,Model model){
         List<Books> list = bookService.queryBookByName(queryBookName);
-        System.err.println("book=>"+list);
 
         if (list.size()==0){
-//            list = bookService.queryAllBook();
             model.addAttribute("error","未查到");
         }
 
