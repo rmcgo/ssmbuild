@@ -1,0 +1,15 @@
+问题：无法获取数据库连接
+步骤：
+1.查看数据源配置，尤其是错误提示Access denied for user ‘mi‘@‘localhost‘ (using password: YES)
+2.发现都没问题，密码也没错
+3.都检查完之后，发现是c3p0需要jdbc.driver,jdbc.url,jdbc.username,jdbc.password等。要以jdbc.开头
+
+bean不存在
+步骤：
+1.查看这个bean注入是否成功
+2.Junit单元测试，看我们的代码是否能够查询出来结果
+3.问题一定不在底层，是spring除了问题
+4.SpringMVC，整合的时候没调用到我们的service层的bean：
+    1.application.xml 没有注入bean
+    2.web.xml中，我们也绑定过配置文件，发现问题，配置的是spring-mvc.xml而不是application.xml
+        这里面没有service bean ，所以报空指针
